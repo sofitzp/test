@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Essential for phone view layout -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Anniversary Tracklist</title>
+    <style>
+        /* Swiftie Twilight Aesthetic Colors */
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+            --card-bg: rgba(255, 255, 255, 0.07);
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+            --accent-pink: #f472b6;
+            --accent-blue: #38bdf8;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0 0 8px 0;
+            background: linear-gradient(to right, var(--accent-pink), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Container for the 24 Tracks */
+        .tracklist-container {
+            width: 100%;
+            max-width: 400px; /* Perfect for mobile screens */
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Single Track Styles */
+        .track-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 0.2s ease;
+        }
+
+        /* Smooth push feedback when tapped on phone */
+        .track-card:active {
+            transform: scale(0.98);
+        }
+
+        .track-header {
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .track-title-block {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .track-number {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-pink);
+            margin-bottom: 2px;
+        }
+
+        .track-name {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chevron {
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+
+        /* Hidden Content Area */
+        .track-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 16px;
+        }
+
+        .track-inner {
+            padding-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 12px;
+        }
+
+        /* Lyrics block styling */
+        .lyrics-quote {
+            font-style: italic;
+            border-left: 2px solid var(--accent-blue);
+            padding-left: 12px;
+            margin: 12px 0;
+            color: #e2e8f0;
+            font-size: 14px;
+        }
+
+        .explanation-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Class added by JavaScript when clicked */
+        .track-card.open .track-content {
+            max-height: 500px; /* Big enough to hold the text */
+        }
+
+        .track-card.open .chevron {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Our Story: The Tracklist</h1>
+        <p class="subtitle">24 songs for June 24th ✨</p>
+    </header>
+
+    <div class="tracklist-container">
+        
+        <!-- TRACK 1 CARD -->
+        <div class="track-card" onclick="toggleTrack(this)">
+            <div class="track-header">
+                <div class="track-title-block">
+                    <span class="track-number">Track 01</span>
+                    <span class="track-name">You Are In Love</span>
+                </div>
+                <div class="chevron">▶</div>
+            </div>
+            <div class="track-content">
+                <div class="track-inner">
+                    <!-- Placeholder for where you can later paste your Spotify link -->
+                    <p style="font-size:12px; color:var(--accent-blue); margin:0;">[Spotify Player Goes Here]</p>
+                    
+                    <div class="lyrics-quote">
+                        "You can hear it in the silence... You can feel it on the way home."
+                    </div>
+                    <p class="explanation-text">
+                        Testing this beautiful card! When you click the header, this layout drops down smoothly. You will be able to copy-paste this block easily for all 24 tracks.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript to control the expanding animation -->
+    <script>
+        function toggleTrack(cardElement) {
+            cardElement.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>
